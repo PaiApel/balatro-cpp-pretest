@@ -5,7 +5,7 @@ void DoubleTrouble::apply(ScoreContext& context) {
 }
 
 std::string DoubleTrouble::getName() const {
-    return "DoubleTrouble";
+    return "Double Trouble";
 }
 
 std::string DoubleTrouble::getDescription() const {

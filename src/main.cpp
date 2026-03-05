@@ -3,45 +3,61 @@
 #include <random>
 #include "Deck.h"
 #include "ScoringSystem.h"
-#include "modifiers/DoubleTrouble.h"
-#include "modifiers/PocketChange.h"
+#include "ModifierFactory.h"
+#include "ShopSystem.h"
 
 int main() {
-    std::cout << "=== Modifier Test ===\n\n";
+    std::cout << "=== Shop System Test ===\n\n";
 
+    int gold = 20;
+    std::vector<IModifier*> activeModifiers;
+
+    // Open shop
+    ShopSystem shop;
+    shop.openShop(gold, activeModifiers);
+
+    // Show what we bought
+    std::cout << "\n-- Active Modifiers --\n";
+    if (activeModifiers.empty()) {
+        std::cout << "  None\n";
+    }
+    else {
+        for (IModifier* m : activeModifiers) {
+            std::cout << "  - " << m->getName() << " (" << m->getDescription() << ")\n";
+        }
+    }
+
+    // Score a random hand with bought modifiers
+    std::cout << "\n-- Scoring with Purchased Modifiers --\n";
     Deck deck;
     deck.shuffle();
 
-    // Draw 8 cards
     std::vector<Card> drawn = deck.drawMultiple(8);
-    std::cout << "-- Drawn Hand (8 cards) --\n";
+    std::cout << "Drawn Hand (8 cards):\n";
     for (int i = 0; i < (int)drawn.size(); i++) {
-        std::cout << "  " << (i+1) << ". " << drawn[i].toString() << " (Chips: " << drawn[i].getChipValue() << ")\n";
+        std::cout << "  " << (i+1) << ". " << drawn[i].toString() << "\n";
     }
 
-    // Pick 5 random cards
     std::vector<int> indices = {0,1,2,3,4,5,6,7};
     std::mt19937 rng(std::random_device{}());
     std::shuffle(indices.begin(), indices.end(), rng);
 
     std::vector<Card> hand;
-    std::cout << "\n-- Selected 5 Cards --\n";
+    std::cout << "\nSelected 5 Cards:\n";
     for (int i = 0; i < 5; i++) {
         hand.push_back(drawn[indices[i]]);
         std::cout << "  " << drawn[indices[i]].toString() << "\n";
     }
 
-    // Test without modifiers
-    std::cout << "\n-- Score WITHOUT Modifiers --\n";
+    std::cout << "\n";
     ScoringSystem scorer;
-    scorer.calculate(hand, {});
+    scorer.calculate(hand, activeModifiers);
 
-    // Test with modifiers
-    std::cout << "\n-- Score WITH Modifiers --\n";
-    DoubleTrouble dt;
-    PocketChange pc;
-    std::vector<IModifier*> modifiers = {&pc, &dt};
-    scorer.calculate(hand, modifiers);
+    // Clean up
+    for (IModifier* m : activeModifiers) {
+        delete m;
+    }
+    activeModifiers.clear();
 
     return 0;
 }

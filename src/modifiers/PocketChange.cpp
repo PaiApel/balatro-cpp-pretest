@@ -5,7 +5,7 @@ void PocketChange::apply(ScoreContext& context) {
 }
 
 std::string PocketChange::getName() const {
-    return "PocketChange";
+    return "Pocket Change";
 }
 
 std::string PocketChange::getDescription() const {
