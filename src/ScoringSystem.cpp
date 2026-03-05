@@ -1,7 +1,7 @@
 #include "ScoringSystem.h"
 #include <iostream>
 
-ScoreContext ScoringSystem::calculate(const std::vector<Card>& cards) {
+ScoreContext ScoringSystem::calculate(const std::vector<Card>& cards, const std::vector<IModifier*>& modifiers) {
     HandEvaluator::HandResult result = HandEvaluator::evaluate(cards);
 
     std::cout << "  Hand: " << result.handName << "\n";
@@ -17,7 +17,19 @@ ScoreContext ScoringSystem::calculate(const std::vector<Card>& cards) {
 
     int totalChips = result.baseChips + cardChips;
     std::cout << "  Card Chips Added: " << cardChips << "\n";
-    std::cout << "  Total Chips: " << totalChips << " | Mult: " << result.baseMult << "\n";
 
-    return ScoreContext(totalChips, result.baseMult);
+    ScoreContext ctx(totalChips, result.baseMult);
+    std::cout << "  Total Chips: " << ctx.chips << " | Mult: " << ctx.mult << "\n";
+
+    // Apply modifiers
+    if (!modifiers.empty()) {
+        std::cout << "\n  -- Applying Modifiers --\n";
+        for (IModifier* m : modifiers) {
+            m->apply(ctx);
+            std::cout << "  [" << m->getName() << "] " << "-> Chips: " << ctx.chips << " | Mult: " << ctx.mult << "\n";
+        }
+    }
+
+    std::cout << "\n  Final Score: " << ctx.finalScore() << "\n";
+    return ctx;
 }
