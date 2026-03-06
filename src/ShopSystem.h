@@ -16,14 +16,18 @@ struct ShopItem {
 
 class ShopSystem {
 public:
+    static const int SHOP_SIZE = 3;
+
     ShopSystem();
 
     void openShop(int& gold, std::vector<IModifier*>& activeModifiers);
+    void refreshShop();
 
 private:
-    std::vector<ShopItem> items;
+    std::vector<ShopItem> allItems;
+    std::vector<ShopItem> currentItems;
 
-    void buildShop();
+    void buildItemPool();
     void displayShop(int gold) const;
     bool buyItem(int index, int& gold, std::vector<IModifier*>& activeModifiers);
 };
