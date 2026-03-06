@@ -13,5 +13,5 @@ std::string PocketChange::getDescription() const {
 }
 
 int PocketChange::getCost() const {
-    return 6;
+    return 7;
 }

@@ -7,8 +7,17 @@ ShopSystem::ShopSystem() {
 
 void ShopSystem::buildShop() {
     items.clear();
-    items.push_back({"DoubleTrouble", "Double Trouble", "Doubles your multiplier (Mult x2)", 8, false});
-    items.push_back({"PocketChange", "Pocket Change", "Adds +50 flat chips", 6, false});
+    items.push_back({"ChipIn", "Chip In", "Adds +25 flat chips", 5, false});
+    items.push_back({"PocketChange", "Pocket Change", "Adds +50 flat chips", 7, false});
+    items.push_back({"MegaPayout", "Mega Payout", "Adds +90 flat chips", 9, false});
+    items.push_back({"SmallBonus", "Small Bonus", "Adds a flat +3 mult", 6, false});
+    items.push_back({"LuckySeven", "Lucky Seven", "Adds a flat +7 mult", 8, false});
+    items.push_back({"MidasTouch", "Midas Touch", "Adds a flat +12 mult", 10, false});
+    items.push_back({"DoubleTrouble", "Double Trouble", "Doubles your multiplier (Mult x2)", 10, false});
+    items.push_back({"TripleThreat", "Triple Threat", "Triples your multiplier (Mult x3)", 12, false});
+    items.push_back({"FourfoldFortune", "Fourfold Fortune", "Quadruples your multiplier (Mult x4)", 14, false});
+    items.push_back({"ChipperReward", "Chipper Reward", "Adds random +20 to +80 chips", 6, false});
+    items.push_back({"FortunesFavor", "Fortune's Favor", "Adds random +2 to +16 mult", 7, false});
 }
 
 void ShopSystem::displayShop(int gold) const {

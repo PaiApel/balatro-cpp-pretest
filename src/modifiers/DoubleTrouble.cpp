@@ -13,5 +13,5 @@ std::string DoubleTrouble::getDescription() const {
 }
 
 int DoubleTrouble::getCost() const {
-    return 8;
+    return 10;
 }
