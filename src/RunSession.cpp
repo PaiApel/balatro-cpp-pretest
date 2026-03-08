@@ -12,8 +12,9 @@ RunSession::RunSession()
       discardsPerRound(4),
       gameOver(false),
       sortByRank(true),
-      sortBySuit(false),
-      scoreTarget(300),
+      sortBySuit(false),baseGold(5),
+      leftoverDivisor(100),
+      scoreTarget(200),
       shopSystem(nullptr)
 {}
 
@@ -26,15 +27,6 @@ RunSession::~RunSession() {
 }
 
 void RunSession::startRun() {
-    std::cout << "\n";
-    std::cout << "========================================\n";
-    std::cout << "       Welcome to the Game!\n";
-    std::cout << "========================================\n";
-    std::cout << "  Survive as long as you can!\n";
-    std::cout << "  Beat the score target each round.\n";
-    std::cout << "  Buy modifiers to boost your score.\n";
-    std::cout << "========================================\n\n";
-
     shopSystem = new ShopSystem();
 
     while (true) {
@@ -62,11 +54,22 @@ void RunSession::startRun() {
     std::cout << "========================================\n";
 }
 
-void RunSession::playRound() {
-    std::cout << "\n=== ROUND " << round << " ===\n";
-    std::cout << "  Target Score: " << scoreTarget << "\n";
+void RunSession::updateGoldFormula() {
+    if (round % 3 == 1 && round > 1) {
+        baseGold += 2;
+        leftoverDivisor += 50;
+        std::cout << "  [Round " << round << "] Gold formula upgraded!\n";
+        std::cout << "  Base gold: " << baseGold << " | Leftover divisor: /" << leftoverDivisor << "\n\n";
+    }
+}
 
+void RunSession::playRound() {
+    updateGoldFormula();
+    deck.reset();
     deck.shuffle();
+
+    std::cout << "\n=============== ROUND " << round << " ===============\n";
+    std::cout << "  Target Score: " << scoreTarget << "\n";
 
     int roundScore = 0;
     int handsLeft = handsPerRound;
@@ -76,15 +79,32 @@ void RunSession::playRound() {
     std::vector<Card> hand = deck.drawMultiple(8);
 
     while (handsLeft > 0 && roundScore < scoreTarget) {
+        if (hand.empty() && deck.remaining() == 0) {
+            std::cout << "  [!] No cards left to play!\n";
+            break;
+        }
+
         std::cout << "----------------------------------------\n";
         std::cout << "  Hands left: " << handsLeft << " | Discards left: " << discardsLeft << "\n";
         std::cout << "  Round Score: " << roundScore << " / " << scoreTarget << "\n";
+        std::cout << "  Cards in deck: " << deck.remaining() << "\n";
         std::cout << "----------------------------------------\n\n";
 
         sortHand(hand);
+        displayActiveModifiers();
         displayHand(hand);
 
+        if (hand.empty() && deck.remaining() > 0) {
+            int toDraw = std::min(8, deck.remaining());
+            std::vector<Card> newCards = deck.drawMultiple(toDraw);
+            hand.insert(hand.end(), newCards.begin(), newCards.end());
+        }
+
         PlayerAction action = getPlayerAction(hand, handsLeft, discardsLeft);
+
+        if (action.isHelp) {
+            continue;
+        }
 
         // Sort
         if (!action.sortType.empty()) {
@@ -104,7 +124,7 @@ void RunSession::playRound() {
         // Quit
         if (action.isQuit) {
             std::cout << "\n  Quitting run...\n";
-            round = 0;
+            gameOver = true;
             return;
         }
 
@@ -132,11 +152,14 @@ void RunSession::playRound() {
                 }
             }
 
-            // Draw back up to 8
-            int toDraw = 8 - (int)hand.size();
-            if (deck.remaining() < toDraw) { deck.reset(); deck.shuffle(); }
-            std::vector<Card> newCards = deck.drawMultiple(toDraw);
-            hand.insert(hand.end(), newCards.begin(), newCards.end());
+            int toDraw = std::min(8 - (int)hand.size(), deck.remaining());
+            if (toDraw > 0) {
+                std::vector<Card> newCards = deck.drawMultiple(toDraw);
+                hand.insert(hand.end(), newCards.begin(), newCards.end());
+            }
+            else if (deck.remaining() == 0) {
+                std::cout << "  [!] Deck is empty! No more cards to draw.\n\n";
+            }
             continue;
         }
 
@@ -160,11 +183,14 @@ void RunSession::playRound() {
                     }
                 }
             }
-            // Draw back up to 8
-            int toDraw = 8 - (int)hand.size();
-            if (deck.remaining() < toDraw) deck.reset();
-            std::vector<Card> newCards = deck.drawMultiple(toDraw);
-            hand.insert(hand.end(), newCards.begin(), newCards.end());
+            int toDraw = std::min(8 - (int)hand.size(), deck.remaining());
+            if (toDraw > 0) {
+                std::vector<Card> newCards = deck.drawMultiple(toDraw);
+                hand.insert(hand.end(), newCards.begin(), newCards.end());
+            }
+            else if (deck.remaining() == 0) {
+                std::cout << "  [!] Deck is empty! No more cards to draw.\n\n";
+            }
 
             std::cout << "\n  Drawing " << toDraw << " new card(s)...\n\n";
         }
@@ -173,7 +199,7 @@ void RunSession::playRound() {
     // Round result
     if (roundScore >= scoreTarget) {
         int leftover  = roundScore - scoreTarget;
-        int goldEarned = 5 + (leftover / 50);
+        int goldEarned = baseGold + (leftover / leftoverDivisor);
         gold += goldEarned;
 
         std::cout << "\n========================================\n";
@@ -181,7 +207,7 @@ void RunSession::playRound() {
         std::cout << "  Final Score : " << roundScore << "\n";
         std::cout << "  Target      : " << scoreTarget << "\n";
         std::cout << "  Leftover    : " << leftover << "\n";
-        std::cout << "  Gold Earned : +" << goldEarned << " (5 base + " << leftover/100 << " bonus)\n";
+        std::cout << "  Gold Earned : +" << goldEarned << " (" << baseGold << " base + " << (leftover / leftoverDivisor) << " bonus)\n";
         std::cout << "  Total Gold  : " << gold << "\n";
         std::cout << "========================================\n";
     }
@@ -210,32 +236,22 @@ void RunSession::displayStatus() const {
     std::cout << "  Round : " << round << "\n";
     std::cout << "  Gold  : " << gold << "\n";
     std::cout << "  Target: " << scoreTarget << "\n";
-    displayModifiers();
     std::cout << "----------------------------------------\n";
-}
-
-void RunSession::displayModifiers() const {
-    if (activeModifiers.empty()) {
-        std::cout << "  Modifiers: None\n";
-        return;
-    }
-    std::cout << "  Modifiers:\n";
-    for (IModifier* m : activeModifiers) {
-        std::cout << "    - " << m->getName() << "\n";
-    }
 }
 
 RunSession::PlayerAction RunSession::getPlayerAction(const std::vector<Card>& hand, int handsLeft, int discardsLeft) {
     PlayerAction action;
     action.isDiscard = false;
     action.isQuit = false;
+    action.isHelp = false;
     action.sortType = "";
 
     std::cout << "\n  Select cards then action:\n";
-    std::cout << "    P  = play  | D  = discard | Q = quit\n";
-    std::cout << "    RS = sort by rank         | SS = sort by suit\n";
-    std::cout << "    H  = hand reference\n";
-    std::cout << "    e.g. '1 3 5 P' or '2 4 D'\n";
+    std::cout << "    [numbers]   = play selected cards\n";
+    std::cout << "    [numbers] D = discard selected cards\n";
+    std::cout << "    RS = sort by rank  | SS = sort by suit\n";
+    std::cout << "    H  = hand reference | Q  = quit\n";
+    std::cout << "    e.g. '1 3 5' to play, '2 4 D' to discard\n";
     std::cout << "  > ";
 
     std::string line;
@@ -261,8 +277,7 @@ RunSession::PlayerAction RunSession::getPlayerAction(const std::vector<Card>& ha
     // Check for hand reference
     if (line == "H") {
         displayHandReference();
-        action.isQuit = false;
-        action.isDiscard = false;
+        action.isHelp = true;
         action.selectedCards.clear();
         return action;
     }
@@ -286,7 +301,7 @@ RunSession::PlayerAction RunSession::getPlayerAction(const std::vector<Card>& ha
     std::istringstream iss(line);
     std::string token;
     while (iss >> token) {
-        if (token == "P" || token == "D" || token == "Q") {
+        if (token == "D" || token == "Q") {
             continue;
         }
         try {
@@ -318,6 +333,18 @@ void RunSession::displayHand(const std::vector<Card>& hand) const {
     }
 }
 
+void RunSession::displayActiveModifiers() const {
+    std::cout << "  Active Modifiers:\n";
+    if (activeModifiers.empty()) {
+        std::cout << "    None\n\n";
+        return;
+    }
+    for (int i = 0; i < (int)activeModifiers.size(); i++) {
+        std::cout << "    " << (i+1) << ". " << activeModifiers[i]->getName() << " - " << activeModifiers[i]->getDescription() << "\n";
+    }
+    std::cout << "\n";
+}
+
 void RunSession::sortHand(std::vector<Card>& hand) const {
     if (sortByRank) {
         std::sort(hand.begin(), hand.end(), [](const Card& a, const Card& b) {
@@ -338,16 +365,19 @@ void RunSession::displayHandReference() const {
     std::cout << "\n========================================\n";
     std::cout << "         P O K E R  H A N D S\n";
     std::cout << "========================================\n";
-    std::cout << "  Hand            Chips  Mult\n";
-    std::cout << "  --------------  -----  ----\n";
-    std::cout << "  High Card          5     1\n";
-    std::cout << "  Pair              10     2\n";
-    std::cout << "  Two Pair          20     2\n";
-    std::cout << "  Three of a Kind   30     3\n";
-    std::cout << "  Straight          30     4\n";
-    std::cout << "  Flush             35     4\n";
-    std::cout << "  Full House        40     4\n";
-    std::cout << "  Four of a Kind    60     7\n";
-    std::cout << "  Straight Flush   100     8\n";
+    std::cout << "  Hand              Chips  Mult\n";
+    std::cout << "  ----------------  -----  ----\n";
+
+    for (const auto& def : HandEvaluator::handDefinitions) {
+        // Pad hand name to 18 characters for alignment
+        std::string name = def.handName;
+        while ((int)name.size() < 18) name += " ";
+        std::cout << "  " << name << std::to_string(def.baseChips);
+
+        // Pad chips to 5 characters
+        std::string chipsStr = std::to_string(def.baseChips);
+        while ((int)chipsStr.size() < 5) chipsStr += " ";
+        std::cout << "\r  " << name << chipsStr << "  " << def.baseMult << "\n";
+    }
     std::cout << "========================================\n\n";
 }

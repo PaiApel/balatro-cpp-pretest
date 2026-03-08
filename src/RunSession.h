@@ -23,6 +23,10 @@ private:
     int scoreTarget;
     bool gameOver;
 
+    // Round reward
+    int baseGold;
+    int leftoverDivisor;
+
     // Hand display state
     bool sortByRank;
     bool sortBySuit;
@@ -40,14 +44,16 @@ private:
     void openShop();
     void displayStatus() const;
     void displayHand(const std::vector<Card>& hand) const;
-    void displayModifiers() const;
+    void displayActiveModifiers() const;
     void sortHand(std::vector<Card>& hand) const;
     void displayHandReference() const;
+    void updateGoldFormula();
 
     struct PlayerAction {
         std::vector<Card> selectedCards;
         bool isDiscard;
         bool isQuit;
+        bool isHelp;
         std::string sortType;
     };
 

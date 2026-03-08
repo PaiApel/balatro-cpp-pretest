@@ -17,6 +17,7 @@ struct ShopItem {
 class ShopSystem {
 public:
     static const int SHOP_SIZE = 3;
+    static const int MODIFIER_LIMIT = 5;
 
     ShopSystem();
 
@@ -28,8 +29,10 @@ private:
     std::vector<ShopItem> currentItems;
 
     void buildItemPool();
-    void displayShop(int gold) const;
+    void displayShop(int gold, int rerollCost, const std::vector<IModifier*>& activeModifiers) const;
     bool buyItem(int index, int& gold, std::vector<IModifier*>& activeModifiers);
+    void openModifierManager(int& gold, std::vector<IModifier*>& activeModifiers);
+    void displayModifierManager( const std::vector<IModifier*>& activeModifiers) const;
 };
 
 #endif

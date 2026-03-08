@@ -13,6 +13,6 @@ std::string FourfoldFortune::getDescription() const {
 }
 
 int FourfoldFortune::getCost() const {
-    return 14;
+    return 20;
 }
 

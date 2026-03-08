@@ -13,6 +13,6 @@ std::string MidasTouch::getDescription() const {
 }
 
 int MidasTouch::getCost() const {
-    return 10;
+    return 14;
 }
 

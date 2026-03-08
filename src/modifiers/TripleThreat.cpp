@@ -13,6 +13,6 @@ std::string TripleThreat::getDescription() const {
 }
 
 int TripleThreat::getCost() const {
-    return 12;
+    return 16;
 }
 

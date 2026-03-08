@@ -13,6 +13,6 @@ std::string MegaPayout::getDescription() const {
 }
 
 int MegaPayout::getCost() const {
-    return 9;
+    return 10;
 }
 

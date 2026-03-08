@@ -2,6 +2,26 @@
 #include <algorithm>
 #include <map>
 
+// Static hand definitions — single source of truth
+const std::vector<HandEvaluator::HandDefinition> HandEvaluator::handDefinitions = {
+    {"High Card",       8,   1},
+    {"Pair",            15,  1},
+    {"Two Pair",        25,  2},
+    {"Three of a Kind", 35,  2},
+    {"Straight",        40,  3},
+    {"Flush",           45,  3},
+    {"Full House",      50,  3},
+    {"Four of a Kind",  70,  4},
+    {"Straight Flush",  120, 5}
+};
+
+// Helper to find definition by name
+static const HandEvaluator::HandDefinition& findDef(const std::string& name) {
+    for (const auto& def : HandEvaluator::handDefinitions)
+        if (def.handName == name) return def;
+    return HandEvaluator::handDefinitions[0]; // fallback to High Card
+}
+
 HandEvaluator::HandResult HandEvaluator::evaluate(const std::vector<Card>& cards) {
     bool flush    = isFlush(cards);
     bool straight = isStraight(cards);
@@ -30,56 +50,56 @@ HandEvaluator::HandResult HandEvaluator::evaluate(const std::vector<Card>& cards
         return result;
     };
 
-    // Straight Flush
+    // Determine hand name and scoring cards
+    std::string handName;
+    std::vector<Card> scoringCards;
+
     if (straight && flush) {
-        return {"Straight Flush", 100, 8, cards};
+        handName = "Straight Flush";
+        scoringCards = cards;
     }
-
-    // Four of a Kind
-    if (counts[0] == 4) {
-        return {"Four of a Kind", 60, 7, collectGroups(1)};
+    else if (counts[0] == 4) {
+        handName = "Four of a Kind";
+        scoringCards = collectGroups(1);
     }
-
-    // Full House
-    if (counts[0] == 3 && counts.size() > 1 && counts[1] == 2) {
-        return {"Full House", 40, 4, cards};
+    else if (counts[0] == 3 && counts.size() > 1 && counts[1] == 2) {
+        handName = "Full House";
+        scoringCards = cards;
     }
-
-    // Flush
-    if (flush) {
-        return {"Flush", 35, 4, cards};
+    else if (flush) {
+        handName = "Flush";
+        scoringCards = cards;
     }
-
-    // Straight
-    if (straight) {
-        return {"Straight", 30, 4, cards};
+    else if (straight) {
+        handName = "Straight";
+        scoringCards = cards;
     }
-
-    // Three of a Kind
-    if (counts[0] == 3) {
-        return {"Three of a Kind", 30, 3, collectGroups(1)};
+    else if (counts[0] == 3) {
+        handName = "Three of a Kind";
+        scoringCards = collectGroups(1);
     }
-
-    // Two Pair
-    if (counts[0] == 2 && counts.size() > 1 && counts[1] == 2) {
-        return {"Two Pair", 20, 2, collectGroups(2)};
+    else if (counts[0] == 2 && counts.size() > 1 && counts[1] == 2) {
+        handName = "Two Pair";
+        scoringCards = collectGroups(2);
     }
-
-    // Pair
-    if (counts[0] == 2) {
-        return {"Pair", 10, 2, collectGroups(1)};
+    else if (counts[0] == 2) {
+        handName = "Pair";
+        scoringCards = collectGroups(1);
     }
-
-    // High Card
-    std::vector<Card> highCard;
-    Card highest = cards[0];
-    for (const Card& c : cards) {
-        if (static_cast<int>(c.getRank()) > static_cast<int>(highest.getRank())) {
-            highest = c;
+    else {
+        handName = "High Card";
+        Card highest = cards[0];
+        for (const Card& c : cards) {
+            if (static_cast<int>(c.getRank()) > static_cast<int>(highest.getRank())){
+                highest = c;
+            }
         }
+        scoringCards = {highest};
     }
-    highCard.push_back(highest);
-    return {"High Card", 5, 1, highCard};
+
+    // Look up definition
+    const HandDefinition& def = findDef(handName);
+    return {def.handName, def.baseChips, def.baseMult, scoringCards};
 }
 
 bool HandEvaluator::isFlush(const std::vector<Card>& cards) {

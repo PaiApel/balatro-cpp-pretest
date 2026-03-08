@@ -9,6 +9,12 @@
 
 class HandEvaluator {
 public:
+    struct HandDefinition {
+        std::string handName;
+        int baseChips;
+        int baseMult;
+    };
+
     struct HandResult {
         std::string handName;
         int baseChips;
@@ -16,6 +22,7 @@ public:
         std::vector<Card> scoringCards;
     };
 
+    static const std::vector<HandDefinition> handDefinitions;
     static HandResult evaluate(const std::vector<Card>& cards);
 
 private:
