@@ -1,0 +1,977 @@
+========================================
+       Welcome to the Game!
+========================================
+  A card-based roguelike game
+
+  HOW TO PLAY:
+  - Beat the score target each round
+  - Play poker hands to score points
+  - Buy modifiers to boost your score
+  - Survive as long as you can!
+
+  CONTROLS:
+  - [numbers]   = play selected cards
+  - [numbers] D = discard selected cards
+  - RS = sort by rank   | SS = sort by suit
+  - H  = hand reference | Q  = quit
+
+  SCORING:
+  - Score = (Base Chips + Card Chips) x Mult
+  - Modifiers applied after base score
+  - Order of modifiers matters!
+========================================
+  Press ENTER to start your run...
+========================================
+
+----------------------------------------
+  Round : 1
+  Gold  : 5
+  Target: 200
+----------------------------------------
+
+=============== ROUND 1 ===============
+  Target Score: 200
+----------------------------------------
+  Hands left: 4 | Discards left: 4
+  Round Score: 0 / 200
+  Cards in deck: 44
+----------------------------------------
+
+  Active Modifiers:
+    None
+
+  Your Hand:
+    1. A of Club (Chips: 11)
+    2. Q of Diamond (Chips: 10)
+    3. J of Club (Chips: 10)
+    4. 10 of Spade (Chips: 10)
+    5. 8 of Heart (Chips: 8)
+    6. 7 of Spade (Chips: 7)
+    7. 4 of Heart (Chips: 4)
+    8. 3 of Spade (Chips: 3)
+
+  Select cards then action:
+    [numbers]   = play selected cards
+    [numbers] D = discard selected cards
+    RS = sort by rank  | SS = sort by suit
+    H  = hand reference | Q  = quit
+    e.g. '1 3 5' to play, '2 4 D' to discard
+  > 6 7 8 d
+  Discarded 3 card(s). Drawing replacements...
+
+----------------------------------------
+  Hands left: 4 | Discards left: 3
+  Round Score: 0 / 200
+  Cards in deck: 41
+----------------------------------------
+
+  Active Modifiers:
+    None
+
+  Your Hand:
+    1. A of Club (Chips: 11)
+    2. Q of Diamond (Chips: 10)
+    3. J of Club (Chips: 10)
+    4. J of Spade (Chips: 10)
+    5. 10 of Spade (Chips: 10)
+    6. 8 of Heart (Chips: 8)
+    7. 4 of Diamond (Chips: 4)
+    8. 3 of Heart (Chips: 3)
+
+  Select cards then action:
+    [numbers]   = play selected cards
+    [numbers] D = discard selected cards
+    RS = sort by rank  | SS = sort by suit
+    H  = hand reference | Q  = quit
+    e.g. '1 3 5' to play, '2 4 D' to discard
+  > 6 7 8 d
+  Discarded 3 card(s). Drawing replacements...
+
+----------------------------------------
+  Hands left: 4 | Discards left: 2
+  Round Score: 0 / 200
+  Cards in deck: 38
+----------------------------------------
+
+  Active Modifiers:
+    None
+
+  Your Hand:
+    1. A of Club (Chips: 11)
+    2. A of Diamond (Chips: 11)
+    3. Q of Diamond (Chips: 10)
+    4. Q of Heart (Chips: 10)
+    5. J of Club (Chips: 10)
+    6. J of Spade (Chips: 10)
+    7. 10 of Spade (Chips: 10)
+    8. 5 of Club (Chips: 5)
+
+  Select cards then action:
+    [numbers]   = play selected cards
+    [numbers] D = discard selected cards
+    RS = sort by rank  | SS = sort by suit
+    H  = hand reference | Q  = quit
+    e.g. '1 3 5' to play, '2 4 D' to discard
+  > 1 2 3 4
+
+-- Score Calculation --
+  Hand: Two Pair
+  Base Chips: 25 | Base Mult: 2
+  Scoring Cards:
+   - Q of Diamond
+   - Q of Heart
+   - A of Club
+   - A of Diamond
+  Card Chips Added: 42
+  Total Chips: 67 | Mult: 2
+
+  Final Score: 134
+
+  Hand Score : 134
+  Round Score: 134 / 200
+
+  Drawing 4 new card(s)...
+
+----------------------------------------
+  Hands left: 3 | Discards left: 2
+  Round Score: 134 / 200
+  Cards in deck: 34
+----------------------------------------
+
+  Active Modifiers:
+    None
+
+  Your Hand:
+    1. J of Club (Chips: 10)
+    2. J of Spade (Chips: 10)
+    3. 10 of Spade (Chips: 10)
+    4. 10 of Club (Chips: 10)
+    5. 9 of Spade (Chips: 9)
+    6. 8 of Spade (Chips: 8)
+    7. 6 of Diamond (Chips: 6)
+    8. 5 of Club (Chips: 5)
+
+  Select cards then action:
+    [numbers]   = play selected cards
+    [numbers] D = discard selected cards
+    RS = sort by rank  | SS = sort by suit
+    H  = hand reference | Q  = quit
+    e.g. '1 3 5' to play, '2 4 D' to discard
+  > 5 6 7 8 d
+  Discarded 4 card(s). Drawing replacements...
+
+----------------------------------------
+  Hands left: 3 | Discards left: 1
+  Round Score: 134 / 200
+  Cards in deck: 30
+----------------------------------------
+
+  Active Modifiers:
+    None
+
+  Your Hand:
+    1. K of Club (Chips: 10)
+    2. J of Club (Chips: 10)
+    3. J of Spade (Chips: 10)
+    4. 10 of Spade (Chips: 10)
+    5. 10 of Club (Chips: 10)
+    6. 7 of Diamond (Chips: 7)
+    7. 5 of Diamond (Chips: 5)
+    8. 4 of Spade (Chips: 4)
+
+  Select cards then action:
+    [numbers]   = play selected cards
+    [numbers] D = discard selected cards
+    RS = sort by rank  | SS = sort by suit
+    H  = hand reference | Q  = quit
+    e.g. '1 3 5' to play, '2 4 D' to discard
+  > 6 7 8 d
+  Discarded 3 card(s). Drawing replacements...
+
+----------------------------------------
+  Hands left: 3 | Discards left: 0
+  Round Score: 134 / 200
+  Cards in deck: 27
+----------------------------------------
+
+  Active Modifiers:
+    None
+
+  Your Hand:
+    1. A of Spade (Chips: 11)
+    2. K of Club (Chips: 10)
+    3. J of Club (Chips: 10)
+    4. J of Spade (Chips: 10)
+    5. 10 of Spade (Chips: 10)
+    6. 10 of Club (Chips: 10)
+    7. 9 of Diamond (Chips: 9)
+    8. 8 of Club (Chips: 8)
+
+  Select cards then action:
+    [numbers]   = play selected cards
+    [numbers] D = discard selected cards
+    RS = sort by rank  | SS = sort by suit
+    H  = hand reference | Q  = quit
+    e.g. '1 3 5' to play, '2 4 D' to discard
+  > 3 4 5 6
+
+-- Score Calculation --
+  Hand: Two Pair
+  Base Chips: 25 | Base Mult: 2
+  Scoring Cards:
+   - 10 of Spade
+   - 10 of Club
+   - J of Club
+   - J of Spade
+  Card Chips Added: 40
+  Total Chips: 65 | Mult: 2
+
+  Final Score: 130
+
+  Hand Score : 130
+  Round Score: 264 / 200
+
+========================================
+  ROUND CLEAR!
+  Final Score : 264
+  Target      : 200
+  Leftover    : 64
+  Gold Earned : +5 (5 base + 0 bonus)
+  Total Gold  : 10
+========================================
+
+-- Next Round Target: 300 --
+
+========================================
+               S H O P
+========================================
+  Gold: 10  |  Modifiers: 0/5
+
+  1. Pocket Change - Adds +50 flat chips (Cost: 7 gold)
+  2. Lucky Seven - Adds a flat +7 mult (Cost: 8 gold)
+  3. Midas Touch - Adds a flat +12 mult (Cost: 14 gold)
+  0. Leave Shop
+  R. Reroll (3 gold)
+  M. Manage Modifiers
+========================================
+  Enter choice: 2
+  Bought: Lucky Seven! (-8 gold)
+  Remaining gold: 2
+
+========================================
+               S H O P
+========================================
+  Gold: 2  |  Modifiers: 1/5
+
+  1. Pocket Change - Adds +50 flat chips (Cost: 7 gold)
+  2. [SOLD] Lucky Seven
+  3. Midas Touch - Adds a flat +12 mult (Cost: 14 gold)
+  0. Leave Shop
+  R. Reroll (3 gold)
+  M. Manage Modifiers
+========================================
+  Enter choice: 0
+  Leaving shop...
+----------------------------------------
+  Round : 2
+  Gold  : 2
+  Target: 300
+----------------------------------------
+
+=============== ROUND 2 ===============
+  Target Score: 300
+----------------------------------------
+  Hands left: 4 | Discards left: 4
+  Round Score: 0 / 300
+  Cards in deck: 44
+----------------------------------------
+
+  Active Modifiers:
+    1. Lucky 7 - Adds a +7 flat mult
+
+  Your Hand:
+    1. A of Heart (Chips: 11)
+    2. Q of Heart (Chips: 10)
+    3. 10 of Diamond (Chips: 10)
+    4. 8 of Club (Chips: 8)
+    5. 8 of Diamond (Chips: 8)
+    6. 6 of Club (Chips: 6)
+    7. 5 of Spade (Chips: 5)
+    8. 2 of Spade (Chips: 2)
+
+  Select cards then action:
+    [numbers]   = play selected cards
+    [numbers] D = discard selected cards
+    RS = sort by rank  | SS = sort by suit
+    H  = hand reference | Q  = quit
+    e.g. '1 3 5' to play, '2 4 D' to discard
+  > 6 7 8 d
+  Discarded 3 card(s). Drawing replacements...
+
+----------------------------------------
+  Hands left: 4 | Discards left: 3
+  Round Score: 0 / 300
+  Cards in deck: 41
+----------------------------------------
+
+  Active Modifiers:
+    1. Lucky 7 - Adds a +7 flat mult
+
+  Your Hand:
+    1. A of Heart (Chips: 11)
+    2. K of Spade (Chips: 10)
+    3. Q of Heart (Chips: 10)
+    4. 10 of Diamond (Chips: 10)
+    5. 8 of Club (Chips: 8)
+    6. 8 of Diamond (Chips: 8)
+    7. 3 of Heart (Chips: 3)
+    8. 2 of Club (Chips: 2)
+
+  Select cards then action:
+    [numbers]   = play selected cards
+    [numbers] D = discard selected cards
+    RS = sort by rank  | SS = sort by suit
+    H  = hand reference | Q  = quit
+    e.g. '1 3 5' to play, '2 4 D' to discard
+  > 7 8 d
+  Discarded 2 card(s). Drawing replacements...
+
+----------------------------------------
+  Hands left: 4 | Discards left: 2
+  Round Score: 0 / 300
+  Cards in deck: 39
+----------------------------------------
+
+  Active Modifiers:
+    1. Lucky 7 - Adds a +7 flat mult
+
+  Your Hand:
+    1. A of Heart (Chips: 11)
+    2. K of Spade (Chips: 10)
+    3. K of Heart (Chips: 10)
+    4. Q of Heart (Chips: 10)
+    5. 10 of Diamond (Chips: 10)
+    6. 8 of Club (Chips: 8)
+    7. 8 of Diamond (Chips: 8)
+    8. 7 of Heart (Chips: 7)
+
+  Select cards then action:
+    [numbers]   = play selected cards
+    [numbers] D = discard selected cards
+    RS = sort by rank  | SS = sort by suit
+    H  = hand reference | Q  = quit
+    e.g. '1 3 5' to play, '2 4 D' to discard
+  > 2 3 6 7
+
+-- Score Calculation --
+  Hand: Two Pair
+  Base Chips: 25 | Base Mult: 2
+  Scoring Cards:
+   - 8 of Club
+   - 8 of Diamond
+   - K of Spade
+   - K of Heart
+  Card Chips Added: 36
+  Total Chips: 61 | Mult: 2
+
+  -- Applying Modifiers --
+  [Lucky 7] -> Chips: 61 | Mult: 9
+
+  Final Score: 549
+
+  Hand Score : 549
+  Round Score: 549 / 300
+
+========================================
+  ROUND CLEAR!
+  Final Score : 549
+  Target      : 300
+  Leftover    : 249
+  Gold Earned : +7 (5 base + 2 bonus)
+  Total Gold  : 9
+========================================
+
+-- Next Round Target: 450 --
+
+========================================
+               S H O P
+========================================
+  Gold: 9  |  Modifiers: 1/5
+
+  1. Fourfold Fortune - Quadruples your multiplier (Mult x4) (Cost: 20 gold)
+  2. Fortune's Favor - Adds random +2 to +16 mult (Cost: 7 gold)
+  3. Midas Touch - Adds a flat +12 mult (Cost: 14 gold)
+  0. Leave Shop
+  R. Reroll (3 gold)
+  M. Manage Modifiers
+========================================
+  Enter choice: 0
+  Leaving shop...
+----------------------------------------
+  Round : 3
+  Gold  : 9
+  Target: 450
+----------------------------------------
+
+=============== ROUND 3 ===============
+  Target Score: 450
+----------------------------------------
+  Hands left: 4 | Discards left: 4
+  Round Score: 0 / 450
+  Cards in deck: 44
+----------------------------------------
+
+  Active Modifiers:
+    1. Lucky 7 - Adds a +7 flat mult
+
+  Your Hand:
+    1. Q of Diamond (Chips: 10)
+    2. J of Heart (Chips: 10)
+    3. 6 of Spade (Chips: 6)
+    4. 6 of Diamond (Chips: 6)
+    5. 5 of Spade (Chips: 5)
+    6. 3 of Heart (Chips: 3)
+    7. 3 of Diamond (Chips: 3)
+    8. 2 of Spade (Chips: 2)
+
+  Select cards then action:
+    [numbers]   = play selected cards
+    [numbers] D = discard selected cards
+    RS = sort by rank  | SS = sort by suit
+    H  = hand reference | Q  = quit
+    e.g. '1 3 5' to play, '2 4 D' to discard
+  > 5 6 7 8 d
+  Discarded 4 card(s). Drawing replacements...
+
+----------------------------------------
+  Hands left: 4 | Discards left: 3
+  Round Score: 0 / 450
+  Cards in deck: 40
+----------------------------------------
+
+  Active Modifiers:
+    1. Lucky 7 - Adds a +7 flat mult
+
+  Your Hand:
+    1. Q of Diamond (Chips: 10)
+    2. J of Heart (Chips: 10)
+    3. J of Diamond (Chips: 10)
+    4. J of Spade (Chips: 10)
+    5. 10 of Spade (Chips: 10)
+    6. 6 of Spade (Chips: 6)
+    7. 6 of Diamond (Chips: 6)
+    8. 2 of Heart (Chips: 2)
+
+  Select cards then action:
+    [numbers]   = play selected cards
+    [numbers] D = discard selected cards
+    RS = sort by rank  | SS = sort by suit
+    H  = hand reference | Q  = quit
+    e.g. '1 3 5' to play, '2 4 D' to discard
+  > 2 3 4 6 7
+
+-- Score Calculation --
+  Hand: Full House
+  Base Chips: 50 | Base Mult: 3
+  Scoring Cards:
+   - J of Heart
+   - J of Diamond
+   - J of Spade
+   - 6 of Spade
+   - 6 of Diamond
+  Card Chips Added: 42
+  Total Chips: 92 | Mult: 3
+
+  -- Applying Modifiers --
+  [Lucky 7] -> Chips: 92 | Mult: 10
+
+  Final Score: 920
+
+  Hand Score : 920
+  Round Score: 920 / 450
+
+========================================
+  ROUND CLEAR!
+  Final Score : 920
+  Target      : 450
+  Leftover    : 470
+  Gold Earned : +9 (5 base + 4 bonus)
+  Total Gold  : 18
+========================================
+
+-- Next Round Target: 675 --
+
+========================================
+               S H O P
+========================================
+  Gold: 18  |  Modifiers: 1/5
+
+  1. Lucky Seven - Adds a flat +7 mult (Cost: 8 gold)
+  2. Chipper Reward - Adds random +20 to +80 chips (Cost: 6 gold)
+  3. Fourfold Fortune - Quadruples your multiplier (Mult x4) (Cost: 20 gold)
+  0. Leave Shop
+  R. Reroll (3 gold)
+  M. Manage Modifiers
+========================================
+  Enter choice: r
+  Shop rerolled! (-3 gold)
+
+========================================
+               S H O P
+========================================
+  Gold: 15  |  Modifiers: 1/5
+
+  1. Small Bonus - Adds a flat +3 mult (Cost: 6 gold)
+  2. Triple Threat - Triples your multiplier (Mult x3) (Cost: 16 gold)
+  3. Mega Payout - Adds +90 flat chips (Cost: 10 gold)
+  0. Leave Shop
+  R. Reroll (4 gold)
+  M. Manage Modifiers
+========================================
+  Enter choice: 3
+  Bought: Mega Payout! (-10 gold)
+  Remaining gold: 5
+
+========================================
+               S H O P
+========================================
+  Gold: 5  |  Modifiers: 2/5
+
+  1. Small Bonus - Adds a flat +3 mult (Cost: 6 gold)
+  2. Triple Threat - Triples your multiplier (Mult x3) (Cost: 16 gold)
+  3. [SOLD] Mega Payout
+  0. Leave Shop
+  R. Reroll (4 gold)
+  M. Manage Modifiers
+========================================
+  Enter choice: m
+
+========================================
+     M O D I F I E R S  (2/5)
+========================================
+  1. Lucky 7 - Adds a +7 flat mult (sell: 4 gold)
+  2. Mega Payout - Adds +90 flat chips to your score (sell: 5 gold)
+
+  Swap : '1 3' to swap positions
+  Sell : 'S 2' to sell modifier 2
+  Back : '0' to return to shop
+========================================
+  > 1 2
+  Swapped modifier 1 and 2.
+
+========================================
+     M O D I F I E R S  (2/5)
+========================================
+  1. Mega Payout - Adds +90 flat chips to your score (sell: 5 gold)
+  2. Lucky 7 - Adds a +7 flat mult (sell: 4 gold)
+
+  Swap : '1 3' to swap positions
+  Sell : 'S 2' to sell modifier 2
+  Back : '0' to return to shop
+========================================
+  > 0
+
+========================================
+               S H O P
+========================================
+  Gold: 5  |  Modifiers: 2/5
+
+  1. Small Bonus - Adds a flat +3 mult (Cost: 6 gold)
+  2. Triple Threat - Triples your multiplier (Mult x3) (Cost: 16 gold)
+  3. [SOLD] Mega Payout
+  0. Leave Shop
+  R. Reroll (4 gold)
+  M. Manage Modifiers
+========================================
+  Enter choice: 0
+  Leaving shop...
+----------------------------------------
+  Round : 4
+  Gold  : 5
+  Target: 675
+----------------------------------------
+  [Round 4] Gold formula upgraded!
+  Base gold: 7 | Leftover divisor: /150
+
+
+=============== ROUND 4 ===============
+  Target Score: 675
+----------------------------------------
+  Hands left: 4 | Discards left: 4
+  Round Score: 0 / 675
+  Cards in deck: 44
+----------------------------------------
+
+  Active Modifiers:
+    1. Mega Payout - Adds +90 flat chips to your score
+    2. Lucky 7 - Adds a +7 flat mult
+
+  Your Hand:
+    1. A of Club (Chips: 11)
+    2. Q of Spade (Chips: 10)
+    3. 8 of Spade (Chips: 8)
+    4. 8 of Club (Chips: 8)
+    5. 6 of Club (Chips: 6)
+    6. 5 of Heart (Chips: 5)
+    7. 5 of Spade (Chips: 5)
+    8. 4 of Heart (Chips: 4)
+
+  Select cards then action:
+    [numbers]   = play selected cards
+    [numbers] D = discard selected cards
+    RS = sort by rank  | SS = sort by suit
+    H  = hand reference | Q  = quit
+    e.g. '1 3 5' to play, '2 4 D' to discard
+  > 5 6 7 8 d
+  Discarded 4 card(s). Drawing replacements...
+
+----------------------------------------
+  Hands left: 4 | Discards left: 3
+  Round Score: 0 / 675
+  Cards in deck: 40
+----------------------------------------
+
+  Active Modifiers:
+    1. Mega Payout - Adds +90 flat chips to your score
+    2. Lucky 7 - Adds a +7 flat mult
+
+  Your Hand:
+    1. A of Club (Chips: 11)
+    2. A of Heart (Chips: 11)
+    3. K of Spade (Chips: 10)
+    4. Q of Spade (Chips: 10)
+    5. Q of Diamond (Chips: 10)
+    6. 8 of Spade (Chips: 8)
+    7. 8 of Club (Chips: 8)
+    8. 5 of Club (Chips: 5)
+
+  Select cards then action:
+    [numbers]   = play selected cards
+    [numbers] D = discard selected cards
+    RS = sort by rank  | SS = sort by suit
+    H  = hand reference | Q  = quit
+    e.g. '1 3 5' to play, '2 4 D' to discard
+  > 6 7 8 d
+  Discarded 3 card(s). Drawing replacements...
+
+----------------------------------------
+  Hands left: 4 | Discards left: 2
+  Round Score: 0 / 675
+  Cards in deck: 37
+----------------------------------------
+
+  Active Modifiers:
+    1. Mega Payout - Adds +90 flat chips to your score
+    2. Lucky 7 - Adds a +7 flat mult
+
+  Your Hand:
+    1. A of Club (Chips: 11)
+    2. A of Heart (Chips: 11)
+    3. K of Spade (Chips: 10)
+    4. K of Club (Chips: 10)
+    5. Q of Spade (Chips: 10)
+    6. Q of Diamond (Chips: 10)
+    7. Q of Heart (Chips: 10)
+    8. Q of Club (Chips: 10)
+
+  Select cards then action:
+    [numbers]   = play selected cards
+    [numbers] D = discard selected cards
+    RS = sort by rank  | SS = sort by suit
+    H  = hand reference | Q  = quit
+    e.g. '1 3 5' to play, '2 4 D' to discard
+  > 5 6 7 8
+
+-- Score Calculation --
+  Hand: Four of a Kind
+  Base Chips: 70 | Base Mult: 4
+  Scoring Cards:
+   - Q of Spade
+   - Q of Diamond
+   - Q of Heart
+   - Q of Club
+  Card Chips Added: 40
+  Total Chips: 110 | Mult: 4
+
+  -- Applying Modifiers --
+  [Mega Payout] -> Chips: 200 | Mult: 4
+  [Lucky 7] -> Chips: 200 | Mult: 11
+
+  Final Score: 2200
+
+  Hand Score : 2200
+  Round Score: 2200 / 675
+
+========================================
+  ROUND CLEAR!
+  Final Score : 2200
+  Target      : 675
+  Leftover    : 1525
+  Gold Earned : +17 (7 base + 10 bonus)
+  Total Gold  : 22
+========================================
+
+-- Next Round Target: 1012 --
+
+========================================
+               S H O P
+========================================
+  Gold: 22  |  Modifiers: 2/5
+
+  1. Triple Threat - Triples your multiplier (Mult x3) (Cost: 16 gold)
+  2. Chipper Reward - Adds random +20 to +80 chips (Cost: 6 gold)
+  3. Lucky Seven - Adds a flat +7 mult (Cost: 8 gold)
+  0. Leave Shop
+  R. Reroll (3 gold)
+  M. Manage Modifiers
+========================================
+  Enter choice: 1
+  Bought: Triple Threat! (-16 gold)
+  Remaining gold: 6
+
+========================================
+               S H O P
+========================================
+  Gold: 6  |  Modifiers: 3/5
+
+  1. [SOLD] Triple Threat
+  2. Chipper Reward - Adds random +20 to +80 chips (Cost: 6 gold)
+  3. Lucky Seven - Adds a flat +7 mult (Cost: 8 gold)
+  0. Leave Shop
+  R. Reroll (3 gold)
+  M. Manage Modifiers
+========================================
+  Enter choice: m
+
+========================================
+     M O D I F I E R S  (3/5)
+========================================
+  1. Mega Payout - Adds +90 flat chips to your score (sell: 5 gold)
+  2. Lucky 7 - Adds a +7 flat mult (sell: 4 gold)
+  3. Triple Threat - Triples your multiplier (Mult x3) (sell: 8 gold)
+
+  Swap : '1 3' to swap positions
+  Sell : 'S 2' to sell modifier 2
+  Back : '0' to return to shop
+========================================
+  > 0
+
+========================================
+               S H O P
+========================================
+  Gold: 6  |  Modifiers: 3/5
+
+  1. [SOLD] Triple Threat
+  2. Chipper Reward - Adds random +20 to +80 chips (Cost: 6 gold)
+  3. Lucky Seven - Adds a flat +7 mult (Cost: 8 gold)
+  0. Leave Shop
+  R. Reroll (3 gold)
+  M. Manage Modifiers
+========================================
+  Enter choice: 0
+  Leaving shop...
+----------------------------------------
+  Round : 5
+  Gold  : 6
+  Target: 1012
+----------------------------------------
+
+=============== ROUND 5 ===============
+  Target Score: 1012
+----------------------------------------
+  Hands left: 4 | Discards left: 4
+  Round Score: 0 / 1012
+  Cards in deck: 44
+----------------------------------------
+
+  Active Modifiers:
+    1. Mega Payout - Adds +90 flat chips to your score
+    2. Lucky 7 - Adds a +7 flat mult
+    3. Triple Threat - Triples your multiplier (Mult x3)
+
+  Your Hand:
+    1. Q of Diamond (Chips: 10)
+    2. 10 of Spade (Chips: 10)
+    3. 10 of Diamond (Chips: 10)
+    4. 9 of Club (Chips: 9)
+    5. 8 of Diamond (Chips: 8)
+    6. 7 of Club (Chips: 7)
+    7. 6 of Spade (Chips: 6)
+    8. 3 of Diamond (Chips: 3)
+
+  Select cards then action:
+    [numbers]   = play selected cards
+    [numbers] D = discard selected cards
+    RS = sort by rank  | SS = sort by suit
+    H  = hand reference | Q  = quit
+    e.g. '1 3 5' to play, '2 4 D' to discard
+  > 3 4 5 6 7
+
+-- Score Calculation --
+  Hand: Straight
+  Base Chips: 40 | Base Mult: 3
+  Scoring Cards:
+   - 10 of Diamond
+   - 9 of Club
+   - 8 of Diamond
+   - 7 of Club
+   - 6 of Spade
+  Card Chips Added: 40
+  Total Chips: 80 | Mult: 3
+
+  -- Applying Modifiers --
+  [Mega Payout] -> Chips: 170 | Mult: 3
+  [Lucky 7] -> Chips: 170 | Mult: 10
+  [Triple Threat] -> Chips: 170 | Mult: 30
+
+  Final Score: 5100
+
+  Hand Score : 5100
+  Round Score: 5100 / 1012
+
+========================================
+  ROUND CLEAR!
+  Final Score : 5100
+  Target      : 1012
+  Leftover    : 4088
+  Gold Earned : +34 (7 base + 27 bonus)
+  Total Gold  : 40
+========================================
+
+-- Next Round Target: 1518 --
+
+========================================
+               S H O P
+========================================
+  Gold: 40  |  Modifiers: 3/5
+
+  1. Midas Touch - Adds a flat +12 mult (Cost: 14 gold)
+  2. Fortune's Favor - Adds random +2 to +16 mult (Cost: 7 gold)
+  3. Lucky Seven - Adds a flat +7 mult (Cost: 8 gold)
+  0. Leave Shop
+  R. Reroll (3 gold)
+  M. Manage Modifiers
+========================================
+  Enter choice: 0
+  Leaving shop...
+----------------------------------------
+  Round : 6
+  Gold  : 40
+  Target: 1518
+----------------------------------------
+
+=============== ROUND 6 ===============
+  Target Score: 1518
+----------------------------------------
+  Hands left: 4 | Discards left: 4
+  Round Score: 0 / 1518
+  Cards in deck: 44
+----------------------------------------
+
+  Active Modifiers:
+    1. Mega Payout - Adds +90 flat chips to your score
+    2. Lucky 7 - Adds a +7 flat mult
+    3. Triple Threat - Triples your multiplier (Mult x3)
+
+  Your Hand:
+    1. Q of Spade (Chips: 10)
+    2. Q of Heart (Chips: 10)
+    3. J of Diamond (Chips: 10)
+    4. 7 of Heart (Chips: 7)
+    5. 6 of Spade (Chips: 6)
+    6. 5 of Diamond (Chips: 5)
+    7. 4 of Spade (Chips: 4)
+    8. 3 of Club (Chips: 3)
+
+  Select cards then action:
+    [numbers]   = play selected cards
+    [numbers] D = discard selected cards
+    RS = sort by rank  | SS = sort by suit
+    H  = hand reference | Q  = quit
+    e.g. '1 3 5' to play, '2 4 D' to discard
+  > ss
+  Hand sorted by suit.
+
+----------------------------------------
+  Hands left: 4 | Discards left: 4
+  Round Score: 0 / 1518
+  Cards in deck: 44
+----------------------------------------
+
+  Active Modifiers:
+    1. Mega Payout - Adds +90 flat chips to your score
+    2. Lucky 7 - Adds a +7 flat mult
+    3. Triple Threat - Triples your multiplier (Mult x3)
+
+  Your Hand:
+    1. Q of Heart (Chips: 10)
+    2. 7 of Heart (Chips: 7)
+    3. J of Diamond (Chips: 10)
+    4. 5 of Diamond (Chips: 5)
+    5. Q of Spade (Chips: 10)
+    6. 6 of Spade (Chips: 6)
+    7. 4 of Spade (Chips: 4)
+    8. 3 of Club (Chips: 3)
+
+  Select cards then action:
+    [numbers]   = play selected cards
+    [numbers] D = discard selected cards
+    RS = sort by rank  | SS = sort by suit
+    H  = hand reference | Q  = quit
+    e.g. '1 3 5' to play, '2 4 D' to discard
+  > h
+
+========================================
+         P O K E R  H A N D S
+========================================
+  Hand              Chips  Mult
+  ----------------  -----  ----
+  High Card         8      1
+  Pair              15     1
+  Two Pair          25     2
+  Three of a Kind   35     2
+  Straight          40     3
+  Flush             45     3
+  Full House        50     3
+  Four of a Kind    70     4
+  Straight Flush    120    5
+========================================
+
+----------------------------------------
+  Hands left: 4 | Discards left: 4
+  Round Score: 0 / 1518
+  Cards in deck: 44
+----------------------------------------
+
+  Active Modifiers:
+    1. Mega Payout - Adds +90 flat chips to your score
+    2. Lucky 7 - Adds a +7 flat mult
+    3. Triple Threat - Triples your multiplier (Mult x3)
+
+  Your Hand:
+    1. Q of Heart (Chips: 10)
+    2. 7 of Heart (Chips: 7)
+    3. J of Diamond (Chips: 10)
+    4. 5 of Diamond (Chips: 5)
+    5. Q of Spade (Chips: 10)
+    6. 6 of Spade (Chips: 6)
+    7. 4 of Spade (Chips: 4)
+    8. 3 of Club (Chips: 3)
+
+  Select cards then action:
+    [numbers]   = play selected cards
+    [numbers] D = discard selected cards
+    RS = sort by rank  | SS = sort by suit
+    H  = hand reference | Q  = quit
+    e.g. '1 3 5' to play, '2 4 D' to discard
+  > q
+  Are you sure you want to quit? (Y/N): y
+
+  Quitting run...
+
+========================================
+              G A M E  O V E R
+========================================
+  You survived 5 round(s)!
+  Final Gold: 40
+========================================
